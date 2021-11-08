@@ -32,6 +32,11 @@
   "engines": {
     "node": ">=12.0.0"
   },
+  "amplify-cli": {
+    "configuration": {
+      "minimumCompatibleCLIVersion": "6.4.0"
+    }
+  },
   "dependencies": {
     "@aws-amplify/amplify-category-api": "2.0.4",
     "@aws-amplify/amplify-category-auth": "2.7.12",

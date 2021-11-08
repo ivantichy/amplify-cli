@@ -63,6 +63,7 @@ export type $TSContext = {
   filesystem: IContextFilesystem;
   template: IContextTemplate;
   updatingAuth: $TSAny;
+  versionInfo: CLIVersionInfo;
 };
 
 /**
@@ -195,6 +196,11 @@ export type DeploymentSecrets = {
 
     environments: { [env: string]: { [category: string]: { [resourceName: string]: { [key: string]: string } } } };
   }>;
+};
+
+export type CLIVersionInfo = {
+  currentCLIVersion: string;
+  minimumCompatibleCLIVersion: string;
 };
 
 /**
