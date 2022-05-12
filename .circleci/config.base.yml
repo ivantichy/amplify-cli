@@ -195,13 +195,14 @@ jobs:
             echo 4 && changeNpmGlobalPath
             echo 5 && yarn yarn-use-bash
             echo 6 && yarn pkg-all
-            echo 7 && unsetNpmRegistryUrl
-            echo 8 && uploadPkgCli
+            exit 0 || echo 7 && unsetNpmRegistryUrl
       - save_cache:
           key: amplify-pkg-binaries-{{ .Branch }}-{{ .Revision }}
           paths:
             - ~/repo/out
-
+      - store_artifacts:
+          path: ~/repo/out
+          destination: binary
   graphql_e2e_tests:
     <<: *defaults
     steps:
