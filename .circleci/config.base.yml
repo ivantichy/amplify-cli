@@ -189,14 +189,14 @@ jobs:
       - run:
           name: Start verdaccio and package CLI
           command: |
-            source .circleci/local_publish_helpers.sh
-            startLocalRegistry "$(pwd)/.circleci/verdaccio.yaml"
-            setNpmRegistryUrlToLocal
-            changeNpmGlobalPath
-            yarn yarn-use-bash
-            yarn pkg-all
-            unsetNpmRegistryUrl
-            uploadPkgCli
+            echo 1 && source .circleci/local_publish_helpers.sh
+            echo 2 && startLocalRegistry "$(pwd)/.circleci/verdaccio.yaml"
+            echo 3 && setNpmRegistryUrlToLocal
+            echo 4 && changeNpmGlobalPath
+            echo 5 && yarn yarn-use-bash
+            echo 6 && yarn pkg-all
+            echo 7 && unsetNpmRegistryUrl
+            echo 8 && uploadPkgCli
       - save_cache:
           key: amplify-pkg-binaries-{{ .Branch }}-{{ .Revision }}
           paths:
