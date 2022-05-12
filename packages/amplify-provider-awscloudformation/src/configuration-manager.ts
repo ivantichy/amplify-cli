@@ -230,7 +230,7 @@ async function initialize(context: $TSContext, authConfig?: AuthFlowConfig) {
       await promptForAuthConfig(context, authConfig);
     }
   }
-
+  console.log("HERE1");
   await validateConfig(context);
   if (!awsConfigInfo.configValidated) {
     context.print.error('Invalid configuration settings!');
@@ -279,7 +279,7 @@ async function create(context: $TSContext) {
   } else {
     await promptForAuthConfig(context);
   }
-
+  console.log("HERE2");
   await validateConfig(context);
   if (awsConfigInfo.configValidated) {
     persistLocalEnvConfig(context);
@@ -297,6 +297,7 @@ async function update(context: $TSContext) {
   } else {
     await promptForAuthConfig(context);
   }
+  console.log("HERE3");
   await validateConfig(context);
   if (awsConfigInfo.configValidated) {
     updateProjectConfig(context);
@@ -437,6 +438,7 @@ async function promptForAuthConfig(context: $TSContext, authConfig?: AuthFlowCon
 
 async function validateConfig(context: $TSContext) {
   const { awsConfigInfo } = context.exeInfo;
+  console.log("MAGICSTRING %o", awsConfigInfo);
   awsConfigInfo.configValidated = false;
   if (awsConfigInfo.configLevel === 'general' || awsConfigInfo.configLevel === 'amplifyAdmin') {
     awsConfigInfo.configValidated = true;
@@ -463,6 +465,7 @@ async function validateConfig(context: $TSContext) {
       try {
         await sts.getCallerIdentity({}).promise();
       } catch (err) {
+        console.log("err %o", err)
         awsConfigInfo.configValidated = false;
       }
     }
