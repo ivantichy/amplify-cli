@@ -91,9 +91,10 @@ function generatePkgCli {
   if [[ "$CIRCLE_BRANCH" == "release" ]] || [[ "$CIRCLE_BRANCH" == "beta" ]] || [[ "$CIRCLE_BRANCH" =~ ^tagged-release ]]; then
     npx pkg -t node14-macos-x64,node14-linux-x64,node14-linux-arm64,node14-win-x64 ../build/node_modules --out-path ../out
   else
-    npx pkg -t node14-linux-x64,node14-win-x64 ../build/node_modules --out-path ../out
+    npx pkg -t node14-linux-x64,node14-win-x64,node14-macos-x64 ../build/node_modules --out-path ../out
     mv ../out/amplify-pkg-linux ../out/amplify-pkg-linux-x64
     mv ../out/amplify-pkg-win.exe ../out/amplify-pkg-win-x64.exe
+    mv ../out/amplify-pkg-macos ../out/amplify-pkg-macos-x64
   fi
 
 
